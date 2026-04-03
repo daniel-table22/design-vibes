@@ -1,4 +1,4 @@
-import rawData from "@/assets/variables_export_2026-04-03T19311.json";
+import rawData from "@/assets/variables_export_2026-04-03T21194.json";
 
 type RawColor = { r: number; g: number; b: number; a: number };
 type RawValue =
@@ -41,15 +41,16 @@ function getCollection(name: string) {
   return data.collections.find((c) => c.name === name);
 }
 
-// ---- Color palette ----
+// ─── Color Palette (primitive) ───────────────────────────────────────────────
+
 export interface ColorSwatch {
-  name: string; // "1" .. "12"
-  cssVar: string; // "--color-tomato-1"
-  value: string; // "rgb(255 252 252)"
+  name: string;
+  cssVar: string;
+  value: string;
 }
 
 export interface ColorFamily {
-  family: string; // "Tomato"
+  family: string;
   swatches: ColorSwatch[];
 }
 
@@ -58,14 +59,23 @@ export function getColorFamilies(): ColorFamily[] {
   if (!col) return [];
 
   const map = new Map<string, ColorSwatch[]>();
+
   for (const v of col.variables) {
-    const parts = v.name.split("/"); // ["Colors", "Tomato", "1"]
+    const parts = v.name.split("/");
+    // Only Colors/ and Overlays/ groups — skip Variables/
+    if (parts[0] !== "Colors" && parts[0] !== "Overlays") continue;
     if (parts.length < 3) continue;
-    const family = parts.slice(1, -1).join(" "); // "Tomato" or "Tomato Alpha"
-    const step = parts[parts.length - 1];
+
     const val = resolveValue(Object.values(v.valuesByMode)[0]);
     if (!val || typeof val !== "object" || !("r" in val)) continue;
-    const cssVar = `--color-${family.toLowerCase().replace(/\s+/g, "-")}-${step}`;
+
+    // "Colors/Tomato/1" → family "Tomato", step "1"
+    // "Overlays/Black Alpha/1" → family "Overlay: Black Alpha", step "1"
+    const prefix = parts[0] === "Overlays" ? "Overlay: " : "";
+    const family = prefix + parts.slice(1, -1).join(" ");
+    const step = parts[parts.length - 1];
+    const cssVar = `--color-${family.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${step}`;
+
     if (!map.has(family)) map.set(family, []);
     map.get(family)!.push({ name: step, cssVar, value: toRgb(val) });
   }
@@ -76,7 +86,40 @@ export function getColorFamilies(): ColorFamily[] {
   }));
 }
 
-// ---- Typography ----
+// ─── Semantic Colors (Theme) ──────────────────────────────────────────────────
+
+export function getSemanticColorFamilies(): ColorFamily[] {
+  const col = getCollection("Theme");
+  if (!col) return [];
+
+  const map = new Map<string, ColorSwatch[]>();
+
+  for (const v of col.variables) {
+    const parts = v.name.split("/");
+    // Colors/Accent/Accent/1, Colors/Neutral/Neutral/1, Colors/Semantic/Success/1
+    if (parts[0] !== "Colors") continue;
+    if (parts.length < 4) continue;
+
+    const val = resolveValue(Object.values(v.valuesByMode)[0]);
+    if (!val || typeof val !== "object" || !("r" in val)) continue;
+
+    // Use last two path segments as family: "Accent" / "Neutral" / "Success" etc.
+    const family = parts.slice(2, -1).join(" ");
+    const step = parts[parts.length - 1];
+    const cssVar = `--theme-${family.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${step}`;
+
+    if (!map.has(family)) map.set(family, []);
+    map.get(family)!.push({ name: step, cssVar, value: toRgb(val) });
+  }
+
+  return Array.from(map.entries()).map(([family, swatches]) => ({
+    family,
+    swatches: swatches.sort((a, b) => Number(a.name) - Number(b.name)),
+  }));
+}
+
+// ─── Typography ───────────────────────────────────────────────────────────────
+
 export interface TypographyScale {
   step: string;
   fontSize: string;
@@ -85,7 +128,7 @@ export interface TypographyScale {
 }
 
 export function getTypographyScale(): TypographyScale[] {
-  const col = getCollection("Theme ✦");
+  const col = getCollection("Theme");
   if (!col) return [];
 
   const fontSizes: Record<string, string> = {};
@@ -120,7 +163,7 @@ export interface FontInfo {
 }
 
 export function getFontInfo(): FontInfo {
-  const col = getCollection("Theme ✦");
+  const col = getCollection("Theme");
   if (!col) return { families: {}, weights: {} };
 
   const families: Record<string, string> = {};
@@ -137,7 +180,8 @@ export function getFontInfo(): FontInfo {
   return { families, weights };
 }
 
-// ---- Spacing ----
+// ─── Spacing ──────────────────────────────────────────────────────────────────
+
 export interface SpacingToken {
   step: string;
   value: string;
@@ -145,7 +189,7 @@ export interface SpacingToken {
 }
 
 export function getSpacingTokens(): SpacingToken[] {
-  const col = getCollection("Theme ✦");
+  const col = getCollection("Theme");
   if (!col) return [];
 
   return col.variables
@@ -159,10 +203,12 @@ export function getSpacingTokens(): SpacingToken[] {
     .sort((a, b) => Number(a.step) - Number(b.step));
 }
 
-// ---- Radius ----
+// ─── Radius ───────────────────────────────────────────────────────────────────
+
 export interface RadiusToken {
   category: string;
   step: string;
+  isMax: boolean;
   value: string;
   px: number;
 }
@@ -171,19 +217,30 @@ export function getRadiusTokens(): RadiusToken[] {
   const col = getCollection("Radius");
   if (!col) return [];
 
+  const categoryOrder = ["None", "Small", "Medium", "Large", "Full"];
+
   return col.variables
     .map((v) => {
       const parts = v.name.split("/");
       const category = parts[0];
-      const step = parts[1] ?? "1";
+      const raw = parts[1] ?? "1";
+      const isMax = raw.endsWith("-max");
+      const step = isMax ? raw.replace("-max", "") : raw;
       const val = resolveValue(Object.values(v.valuesByMode)[0]);
       const px = typeof val === "number" ? val : 0;
-      return { category, step, value: `${px}px`, px };
+      return { category, step, isMax, value: `${px}px`, px };
     })
-    .sort((a, b) => a.px - b.px);
+    .filter((t) => !t.isMax) // show base steps only (skip -max variants)
+    .sort((a, b) => {
+      const catA = categoryOrder.indexOf(a.category);
+      const catB = categoryOrder.indexOf(b.category);
+      if (catA !== catB) return catA - catB;
+      return Number(a.step) - Number(b.step);
+    });
 }
 
-// ---- Scaling ----
+// ─── Scaling ──────────────────────────────────────────────────────────────────
+
 export interface ScalingRow {
   scale: string;
   values: { step: string; value: string }[];
@@ -194,10 +251,12 @@ export function getScalingTokens(): ScalingRow[] {
   if (!col) return [];
 
   const map = new Map<string, { step: string; value: string }[]>();
+
   for (const v of col.variables) {
     const parts = v.name.split("/");
-    const scale = parts[0]; // "100%"
-    const step = parts[1]; // "1"
+    const scale = parts[0];
+    const step = parts[1];
+    if (!step || isNaN(Number(step))) continue; // skip "95%/09" typo
     const val = resolveValue(Object.values(v.valuesByMode)[0]);
     const num = typeof val === "number" ? +val.toFixed(1) : 0;
     if (!map.has(scale)) map.set(scale, []);
