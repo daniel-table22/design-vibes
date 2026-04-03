@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init:*)",
+      "Bash(git -C /Users/danielnacamuli/Documents/Projects/Design-vibes status)",
+      "Bash(gh auth:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo:*)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(cp -r /Users/danielnacamuli/Documents/Projects/design-vibes-app/. /Users/danielnacamuli/Documents/Projects/Design-vibes/ --exclude=.git)",
+      "Bash(rsync -a --exclude='.git' /Users/danielnacamuli/Documents/Projects/design-vibes-app/ /Users/danielnacamuli/Documents/Projects/Design-vibes/)",
+      "Bash(rm -rf /Users/danielnacamuli/Documents/Projects/design-vibes-app)",
+      "Bash(npm run:*)",
+      "Bash(git rm:*)"
+    ]
+  }
+}
