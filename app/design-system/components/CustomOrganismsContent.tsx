@@ -19,6 +19,7 @@ export default function CustomOrganismsContent() {
         ]}
         render={(props) => (
           <MembershipCard
+            imageSrc="/photos/membership-card.jpg"
             gift={props.gift as boolean}
             fulfillment={props.fulfillment ? "Delivery on Monday 12/13" : undefined}
             cta={props.cta ? "Pick a delivery window by 12/11" : undefined}
