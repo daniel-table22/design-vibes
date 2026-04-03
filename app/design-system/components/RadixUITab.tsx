@@ -2,6 +2,7 @@
 
 import ComponentShowcase from "./ComponentShowcase";
 import { AlertDialog, type AlertDialogSize } from "@/components/ui/alert-dialog";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export default function RadixUITab() {
   return (
@@ -21,6 +22,16 @@ export default function RadixUITab() {
             insetContent={props.insetContent as boolean}
             showDescription={props.showDescription as boolean}
           />
+        )}
+      />
+      <ComponentShowcase
+        name="Aspect Ratio"
+        defaultProps={{ ratio: "16:9" }}
+        controls={[
+          { type: "select", label: "Ratio", key: "ratio", options: ["16:9", "1:1", "2:3"] },
+        ]}
+        render={(props) => (
+          <AspectRatio ratio={props.ratio as "16:9" | "1:1" | "2:3"} />
         )}
       />
     </div>
