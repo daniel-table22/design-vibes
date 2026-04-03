@@ -2,6 +2,7 @@
 
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Collapsible from "@radix-ui/react-collapsible";
+import RadixUITab from "./RadixUITab";
 import type {
   ColorFamily,
   NamedColorToken,
@@ -392,7 +393,7 @@ export default function FoundationsClient({
       </Tabs.Content>
 
       <Tabs.Content value="radix-ui">
-        <EmptyTab title="Radix UI" description="Radix-based design system components will appear here." />
+        <RadixUITab />
       </Tabs.Content>
 
       <Tabs.Content value="custom-atoms">
