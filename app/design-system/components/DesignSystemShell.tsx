@@ -5,6 +5,7 @@ import FoundationsContent, { type FoundationsProps } from "./FoundationsContent"
 import CoreRadixLayout from "./CoreRadixLayout";
 import CoreRadixTypography from "./CoreRadixTypography";
 import CoreRadixTab from "./CoreRadixTab";
+import CustomOrganismsContent from "./CustomOrganismsContent";
 
 type Section =
   | "foundations"
@@ -94,7 +95,7 @@ export default function DesignSystemShell(props: FoundationsProps) {
         {active === "core-radix/components" && <CoreRadixTab />}
         {active === "custom/atoms" && <EmptySection title="Atoms" description="Custom atomic components will appear here." />}
         {active === "custom/molecules" && <EmptySection title="Molecules" description="Custom molecule components will appear here." />}
-        {active === "custom/organisms" && <EmptySection title="Organisms" description="Custom organism components will appear here." />}
+        {active === "custom/organisms" && <CustomOrganismsContent />}
       </main>
     </div>
   );
