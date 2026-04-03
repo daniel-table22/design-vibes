@@ -125,7 +125,7 @@ export default function FoundationsClient({
 
       <Tabs.Content value="foundations" className="space-y-16">
 
-        {/* ── Color Palette ── */}
+        {/* 1. Color Palette (collapsed) */}
         <section>
           <Collapsible.Root defaultOpen={false}>
             <div className="flex items-center justify-between mb-5">
@@ -180,19 +180,19 @@ export default function FoundationsClient({
           )}
         </section>
 
-        {/* ── Panel Tokens ── */}
-        <section>
-          <SectionHeader title="Panel" subtitle="Theme — panel surface colors" />
-          <div className="space-y-2">
-            {panelTokens.map((t) => <NamedColorRow key={t.name} token={t} />)}
-          </div>
-        </section>
-
         {/* ── Token Colors ── */}
         <section>
           <SectionHeader title="Token Colors" subtitle="Theme Tokens/Colors — semantic role tokens" />
           <div className="space-y-2">
             {tokenColors.map((t) => <NamedColorRow key={t.name} token={t} />)}
+          </div>
+        </section>
+
+        {/* ── Panel Tokens ── */}
+        <section>
+          <SectionHeader title="Panel" subtitle="Theme — panel surface colors" />
+          <div className="space-y-2">
+            {panelTokens.map((t) => <NamedColorRow key={t.name} token={t} />)}
           </div>
         </section>
 
