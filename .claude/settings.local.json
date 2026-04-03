@@ -12,7 +12,12 @@
       "Bash(rsync -a --exclude='.git' /Users/danielnacamuli/Documents/Projects/design-vibes-app/ /Users/danielnacamuli/Documents/Projects/Design-vibes/)",
       "Bash(rm -rf /Users/danielnacamuli/Documents/Projects/design-vibes-app)",
       "Bash(npm run:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(git -C /Users/danielnacamuli/Documents/Projects/Design-vibes diff)",
+      "Bash(git push:*)",
+      "Bash(grep -n '^\\\\s*]\\\\s*$' /Users/danielnacamuli/Documents/Projects/Design-vibes/assets/variables_export_2026-04-03T19311.json)",
+      "Bash(npm install:*)",
+      "Bash(node:*)"
     ]
   }
 }
