@@ -5,7 +5,7 @@ import { AlertDialog, type AlertDialogSize } from "@/components/ui/alert-dialog"
 
 export default function RadixUITab() {
   return (
-    <div className="divide-y divide-gray-100">
+    <div>
       <ComponentShowcase
         name="Alert Dialog"
         defaultProps={{ size: "3", insetContent: false, showDescription: true }}
@@ -14,14 +14,6 @@ export default function RadixUITab() {
           { type: "toggle", label: "Inset Content", key: "insetContent" },
           { type: "toggle", label: "Description", key: "showDescription" },
         ]}
-        preview={(props) => (
-          <AlertDialog
-            inline
-            size={props.size as AlertDialogSize}
-            insetContent={props.insetContent as boolean}
-            showDescription={props.showDescription as boolean}
-          />
-        )}
         render={(props) => (
           <AlertDialog
             inline
