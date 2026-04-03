@@ -80,6 +80,15 @@ function NamedColorRow({ token }: { token: NamedColorToken }) {
   );
 }
 
+function EmptyTab({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="flex flex-col items-center justify-center py-32 text-center">
+      <p className="text-sm font-medium text-gray-400">{title}</p>
+      <p className="text-xs text-gray-300 mt-1">{description}</p>
+    </div>
+  );
+}
+
 // ── Main component ───────────────────────────────────────────────────────────
 
 export default function FoundationsClient({
@@ -115,12 +124,19 @@ export default function FoundationsClient({
   return (
     <Tabs.Root defaultValue="foundations">
       <Tabs.List className="flex gap-6 border-b border-gray-200 mb-8">
-        <Tabs.Trigger
-          value="foundations"
-          className="pb-3 text-sm font-medium text-gray-500 border-b-2 border-transparent data-[state=active]:border-black data-[state=active]:text-black cursor-pointer"
-        >
-          Foundations
-        </Tabs.Trigger>
+        {["foundations", "radix-ui", "custom-atoms", "custom-molecules", "custom-organisms"].map((value) => (
+          <Tabs.Trigger
+            key={value}
+            value={value}
+            className="pb-3 text-sm font-medium text-gray-500 border-b-2 border-transparent data-[state=active]:border-black data-[state=active]:text-black cursor-pointer whitespace-nowrap"
+          >
+            {value === "foundations" ? "Foundations"
+              : value === "radix-ui" ? "Radix UI"
+              : value === "custom-atoms" ? "Custom Atoms"
+              : value === "custom-molecules" ? "Custom Molecules"
+              : "Custom Organisms"}
+          </Tabs.Trigger>
+        ))}
       </Tabs.List>
 
       <Tabs.Content value="foundations" className="space-y-16">
@@ -374,6 +390,23 @@ export default function FoundationsClient({
         </section>
 
       </Tabs.Content>
+
+      <Tabs.Content value="radix-ui">
+        <EmptyTab title="Radix UI" description="Radix-based design system components will appear here." />
+      </Tabs.Content>
+
+      <Tabs.Content value="custom-atoms">
+        <EmptyTab title="Custom Atoms" description="Custom atomic components will appear here." />
+      </Tabs.Content>
+
+      <Tabs.Content value="custom-molecules">
+        <EmptyTab title="Custom Molecules" description="Custom molecule components will appear here." />
+      </Tabs.Content>
+
+      <Tabs.Content value="custom-organisms">
+        <EmptyTab title="Custom Organisms" description="Custom organism components will appear here." />
+      </Tabs.Content>
+
     </Tabs.Root>
   );
 }
