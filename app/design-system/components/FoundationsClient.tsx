@@ -1,6 +1,7 @@
 "use client";
 
 import * as Tabs from "@radix-ui/react-tabs";
+import * as Collapsible from "@radix-ui/react-collapsible";
 import type {
   ColorFamily,
   NamedColorToken,
@@ -126,26 +127,36 @@ export default function FoundationsClient({
 
         {/* ── Color Palette ── */}
         <section>
-          <SectionHeader title="Color Palette" subtitle="Color scheme — primitive 12-step scales" />
-          <div className="space-y-2">
-            {primitiveColors.map((f) => <SwatchRow key={f.family} {...f} />)}
-          </div>
-          {overlayColors.length > 0 && (
-            <>
-              <p className="text-xs text-gray-400 mt-6 mb-3">Overlays</p>
-              <div className="space-y-2">
-                {overlayColors.map((f) => <SwatchRow key={f.family} {...f} />)}
+          <Collapsible.Root defaultOpen={false}>
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <h2 className="text-lg font-semibold">Color Palette</h2>
+                <p className="text-xs text-gray-400">Color scheme — primitive 12-step scales</p>
               </div>
-            </>
-          )}
-          {variableColors.length > 0 && (
-            <>
-              <p className="text-xs text-gray-400 mt-6 mb-3">Variables (Effects &amp; Misc)</p>
+              <Collapsible.Trigger className="text-xs text-gray-400 hover:text-black cursor-pointer select-none data-[state=open]:after:content-['Collapse_↑'] data-[state=closed]:after:content-['Expand_↓']" />
+            </div>
+            <Collapsible.Content>
               <div className="space-y-2">
-                {variableColors.map((t) => <NamedColorRow key={t.name} token={t} />)}
+                {primitiveColors.map((f) => <SwatchRow key={f.family} {...f} />)}
               </div>
-            </>
-          )}
+              {overlayColors.length > 0 && (
+                <>
+                  <p className="text-xs text-gray-400 mt-6 mb-3">Overlays</p>
+                  <div className="space-y-2">
+                    {overlayColors.map((f) => <SwatchRow key={f.family} {...f} />)}
+                  </div>
+                </>
+              )}
+              {variableColors.length > 0 && (
+                <>
+                  <p className="text-xs text-gray-400 mt-6 mb-3">Variables (Effects &amp; Misc)</p>
+                  <div className="space-y-2">
+                    {variableColors.map((t) => <NamedColorRow key={t.name} token={t} />)}
+                  </div>
+                </>
+              )}
+            </Collapsible.Content>
+          </Collapsible.Root>
         </section>
 
         {/* ── Semantic Colors ── */}
