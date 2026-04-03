@@ -1124,6 +1124,56 @@
   --scale-110-9: 70.4;
 
   /* ── Responsive sizes (custom) ── */
+
+  /* ── Semantic aliases (point components here, not at --theme-*) ── */
+  --accent-1: var(--theme-accent-1);
+  --accent-2: var(--theme-accent-2);
+  --accent-3: var(--theme-accent-3);
+  --accent-4: var(--theme-accent-4);
+  --accent-5: var(--theme-accent-5);
+  --accent-6: var(--theme-accent-6);
+  --accent-7: var(--theme-accent-7);
+  --accent-8: var(--theme-accent-8);
+  --accent-9: var(--theme-accent-9);
+  --accent-10: var(--theme-accent-10);
+  --accent-11: var(--theme-accent-11);
+  --accent-12: var(--theme-accent-12);
+  --accent-alpha-1: var(--theme-accent-alpha-1);
+  --accent-alpha-2: var(--theme-accent-alpha-2);
+  --accent-alpha-3: var(--theme-accent-alpha-3);
+  --accent-alpha-4: var(--theme-accent-alpha-4);
+  --accent-alpha-5: var(--theme-accent-alpha-5);
+  --accent-alpha-6: var(--theme-accent-alpha-6);
+  --accent-alpha-7: var(--theme-accent-alpha-7);
+  --accent-alpha-8: var(--theme-accent-alpha-8);
+  --accent-alpha-9: var(--theme-accent-alpha-9);
+  --accent-alpha-10: var(--theme-accent-alpha-10);
+  --accent-alpha-11: var(--theme-accent-alpha-11);
+  --accent-alpha-12: var(--theme-accent-alpha-12);
+  --neutral-1: var(--theme-neutral-1);
+  --neutral-2: var(--theme-neutral-2);
+  --neutral-3: var(--theme-neutral-3);
+  --neutral-4: var(--theme-neutral-4);
+  --neutral-5: var(--theme-neutral-5);
+  --neutral-6: var(--theme-neutral-6);
+  --neutral-7: var(--theme-neutral-7);
+  --neutral-8: var(--theme-neutral-8);
+  --neutral-9: var(--theme-neutral-9);
+  --neutral-10: var(--theme-neutral-10);
+  --neutral-11: var(--theme-neutral-11);
+  --neutral-12: var(--theme-neutral-12);
+  --neutral-alpha-1: var(--theme-neutral-alpha-1);
+  --neutral-alpha-2: var(--theme-neutral-alpha-2);
+  --neutral-alpha-3: var(--theme-neutral-alpha-3);
+  --neutral-alpha-4: var(--theme-neutral-alpha-4);
+  --neutral-alpha-5: var(--theme-neutral-alpha-5);
+  --neutral-alpha-6: var(--theme-neutral-alpha-6);
+  --neutral-alpha-7: var(--theme-neutral-alpha-7);
+  --neutral-alpha-8: var(--theme-neutral-alpha-8);
+  --neutral-alpha-9: var(--theme-neutral-alpha-9);
+  --neutral-alpha-10: var(--theme-neutral-alpha-10);
+  --neutral-alpha-11: var(--theme-neutral-alpha-11);
+  --neutral-alpha-12: var(--theme-neutral-alpha-12);
 }
 
 @theme inline {

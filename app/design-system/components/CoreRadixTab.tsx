@@ -65,21 +65,21 @@ function AlertDialogPreview({ sz, showDesc }: { sz: ADSize; showDesc: boolean })
   return (
     <div
       className={[
-        "w-full flex flex-col bg-white border border-black/[0.06]",
+        "w-full flex flex-col bg-[var(--neutral-1)] border border-black/[0.06]",
         "shadow-[0_16px_36px_-20px_rgba(0,6,46,0.2),0_16px_64px_rgba(0,0,85,0.02),0_12px_60px_rgba(0,0,0,0.15)]",
         s.dialog, s.w,
       ].join(" ")}
     >
       <div className={`flex flex-col gap-[var(--spacing-1)] ${s.pad}`}>
-        <p className={`text-gray-900 ${s.title}`}>Are you absolutely sure?</p>
+        <p className={`text-[var(--neutral-12)] ${s.title}`}>Are you absolutely sure?</p>
         {showDesc && (
-          <p className={`text-gray-500 ${s.desc}`}>
+          <p className={`text-[var(--neutral-8)] ${s.desc}`}>
             This action cannot be undone. This will permanently delete your account and remove your data from our servers.
           </p>
         )}
       </div>
       <div className={`flex items-center justify-end gap-[var(--spacing-2)] ${s.pad}`}>
-        <button className={`font-medium bg-black/[0.06] text-gray-600 cursor-pointer hover:bg-black/10 transition-colors ${s.btn}`}>
+        <button className={`font-medium bg-[var(--neutral-alpha-3)] text-[var(--neutral-9)] cursor-pointer hover:bg-[var(--neutral-alpha-4)] transition-colors ${s.btn}`}>
           Cancel
         </button>
         <button className={`font-medium bg-red-500 text-white cursor-pointer hover:bg-red-600 transition-colors ${s.btn}`}>
@@ -107,7 +107,7 @@ function AlertDialogShowcase() {
           <div className="flex items-center gap-3">
             <AlertDialogPrimitive.Root open={open} onOpenChange={setOpen}>
               <AlertDialogPrimitive.Trigger asChild>
-                <button className="px-3 py-1.5 text-xs font-medium bg-black text-white rounded hover:bg-gray-800 transition-colors cursor-pointer">
+                <button className="px-3 py-1.5 text-xs font-medium bg-black text-white rounded hover:bg-[var(--neutral-11)] transition-colors cursor-pointer">
                   Open live dialog
                 </button>
               </AlertDialogPrimitive.Trigger>
@@ -116,7 +116,7 @@ function AlertDialogShowcase() {
                 <AlertDialogPrimitive.Content
                   className={[
                     "fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100vw-2rem)]",
-                    "flex flex-col bg-white border border-black/[0.06]",
+                    "flex flex-col bg-[var(--neutral-1)] border border-black/[0.06]",
                     "shadow-[0_16px_36px_-20px_rgba(0,6,46,0.2),0_16px_64px_rgba(0,0,85,0.02),0_12px_60px_rgba(0,0,0,0.15)]",
                     "focus:outline-none",
                     adSize[props.size as ADSize].dialog,
@@ -124,17 +124,17 @@ function AlertDialogShowcase() {
                   ].join(" ")}
                 >
                   <div className={`flex flex-col gap-[var(--spacing-1)] ${adSize[props.size as ADSize].pad}`}>
-                    <AlertDialogPrimitive.Title className={`text-gray-900 ${adSize[props.size as ADSize].title}`}>
+                    <AlertDialogPrimitive.Title className={`text-[var(--neutral-12)] ${adSize[props.size as ADSize].title}`}>
                       Are you absolutely sure?
                     </AlertDialogPrimitive.Title>
                     {(props.showDescription as boolean) && (
-                      <AlertDialogPrimitive.Description className={`text-gray-500 ${adSize[props.size as ADSize].desc}`}>
+                      <AlertDialogPrimitive.Description className={`text-[var(--neutral-8)] ${adSize[props.size as ADSize].desc}`}>
                         This action cannot be undone. This will permanently delete your account and remove your data from our servers.
                       </AlertDialogPrimitive.Description>
                     )}
                   </div>
                   <div className={`flex items-center justify-end gap-[var(--spacing-2)] ${adSize[props.size as ADSize].pad}`}>
-                    <AlertDialogPrimitive.Cancel className={`font-medium bg-black/[0.06] text-gray-600 cursor-pointer hover:bg-black/10 transition-colors ${adSize[props.size as ADSize].btn}`}>
+                    <AlertDialogPrimitive.Cancel className={`font-medium bg-[var(--neutral-alpha-3)] text-[var(--neutral-9)] cursor-pointer hover:bg-[var(--neutral-alpha-4)] transition-colors ${adSize[props.size as ADSize].btn}`}>
                       Cancel
                     </AlertDialogPrimitive.Cancel>
                     <AlertDialogPrimitive.Action className={`font-medium bg-red-500 text-white cursor-pointer hover:bg-red-600 transition-colors ${adSize[props.size as ADSize].btn}`}>
@@ -175,7 +175,7 @@ function AvatarShowcase() {
         const sz = avatarSizes[props.size as string] ?? avatarSizes["4"];
         return (
           <AvatarPrimitive.Root
-            className={`inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--color-violet-3)] select-none ${sz}`}
+            className={`inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--accent-3)] select-none ${sz}`}
           >
             {props.variant === "image" && (
               <AvatarPrimitive.Image
@@ -185,7 +185,7 @@ function AvatarShowcase() {
               />
             )}
             <AvatarPrimitive.Fallback
-              className="flex items-center justify-center w-full h-full font-medium text-[var(--color-violet-11)]"
+              className="flex items-center justify-center w-full h-full font-medium text-[var(--accent-11)]"
               delayMs={props.variant === "image" ? 600 : 0}
             >
               AB
@@ -205,10 +205,10 @@ const badgeSizeClasses: Record<string, string> = {
   "3": "px-[var(--spacing-3)] py-[4px] text-[length:var(--font-size-3)] rounded-[var(--radius-medium-3)]",
 };
 const badgeVariantClasses: Record<string, string> = {
-  solid: "bg-[var(--color-violet-9)] text-white",
-  soft: "bg-[var(--color-violet-3)] text-[var(--color-violet-11)]",
-  outline: "border border-[var(--color-violet-7)] text-[var(--color-violet-11)] bg-transparent",
-  surface: "bg-[var(--color-violet-2)] border border-[var(--color-violet-6)] text-[var(--color-violet-11)]",
+  solid: "bg-[var(--accent-9)] text-white",
+  soft: "bg-[var(--accent-3)] text-[var(--accent-11)]",
+  outline: "border border-[var(--accent-7)] text-[var(--accent-11)] bg-transparent",
+  surface: "bg-[var(--accent-2)] border border-[var(--accent-6)] text-[var(--accent-11)]",
 };
 
 function BadgeShowcase() {
@@ -240,12 +240,12 @@ const btnSizeClasses: Record<string, string> = {
   "4": "h-12 px-[var(--spacing-5)] text-[length:var(--font-size-4)] rounded-[var(--radius-medium-4)]",
 };
 const btnVariantClasses: Record<string, string> = {
-  solid: "bg-[var(--color-violet-9)] text-white hover:bg-[var(--color-violet-10)]",
-  soft: "bg-[var(--color-violet-3)] text-[var(--color-violet-11)] hover:bg-[var(--color-violet-4)]",
-  outline: "border border-[var(--color-violet-7)] text-[var(--color-violet-11)] bg-transparent hover:bg-[var(--color-violet-2)]",
-  surface: "bg-[var(--color-violet-2)] border border-[var(--color-violet-6)] text-[var(--color-violet-11)] hover:bg-[var(--color-violet-3)]",
-  ghost: "text-[var(--color-violet-11)] bg-transparent hover:bg-[var(--color-violet-2)]",
-  classic: "bg-white border border-gray-200 text-gray-800 shadow-sm hover:bg-gray-50",
+  solid: "bg-[var(--accent-9)] text-white hover:bg-[var(--accent-10)]",
+  soft: "bg-[var(--accent-3)] text-[var(--accent-11)] hover:bg-[var(--accent-4)]",
+  outline: "border border-[var(--accent-7)] text-[var(--accent-11)] bg-transparent hover:bg-[var(--accent-2)]",
+  surface: "bg-[var(--accent-2)] border border-[var(--accent-6)] text-[var(--accent-11)] hover:bg-[var(--accent-3)]",
+  ghost: "text-[var(--accent-11)] bg-transparent hover:bg-[var(--accent-2)]",
+  classic: "bg-[var(--neutral-1)] border border-[var(--neutral-3)] text-[var(--neutral-11)] shadow-sm hover:bg-[var(--neutral-1)]",
 };
 
 function ButtonShowcase() {
@@ -312,8 +312,8 @@ const cardSizeClasses: Record<string, string> = {
   "3": "p-[var(--spacing-5)] rounded-[var(--radius-medium-5)]",
 };
 const cardVariantClasses: Record<string, string> = {
-  surface: "bg-white border border-gray-200 shadow-sm",
-  classic: "bg-white border border-gray-300 shadow-[0_2px_4px_rgba(0,0,0,0.08)]",
+  surface: "bg-[var(--neutral-1)] border border-[var(--neutral-3)] shadow-sm",
+  classic: "bg-[var(--neutral-1)] border border-[var(--neutral-4)] shadow-[0_2px_4px_rgba(0,0,0,0.08)]",
   ghost: "bg-transparent",
 };
 
@@ -328,8 +328,8 @@ function CardShowcase() {
       ]}
       render={(props) => (
         <div className={`w-48 ${cardSizeClasses[props.size as string] ?? cardSizeClasses["2"]} ${cardVariantClasses[props.variant as string] ?? cardVariantClasses["surface"]}`}>
-          <p className="text-[length:var(--font-size-3)] font-semibold text-gray-900 mb-1">Card Title</p>
-          <p className="text-[length:var(--font-size-1)] text-gray-500">Some placeholder content inside the card component.</p>
+          <p className="text-[length:var(--font-size-3)] font-semibold text-[var(--neutral-12)] mb-1">Card Title</p>
+          <p className="text-[length:var(--font-size-1)] text-[var(--neutral-8)]">Some placeholder content inside the card component.</p>
         </div>
       )}
     />
@@ -344,8 +344,8 @@ const checkboxSizeClasses: Record<string, string> = {
   "3": "w-5 h-5 rounded-[var(--radius-medium-3)]",
 };
 const checkboxVariantClasses: Record<string, string> = {
-  classic: "border-2 border-gray-400 data-[state=checked]:bg-[var(--color-violet-9)] data-[state=checked]:border-[var(--color-violet-9)]",
-  surface: "border border-gray-300 bg-gray-50 data-[state=checked]:bg-[var(--color-violet-9)] data-[state=checked]:border-[var(--color-violet-9)]",
+  classic: "border-2 border-[var(--neutral-5)] data-[state=checked]:bg-[var(--accent-9)] data-[state=checked]:border-[var(--accent-9)]",
+  surface: "border border-[var(--neutral-4)] bg-[var(--neutral-1)] data-[state=checked]:bg-[var(--accent-9)] data-[state=checked]:border-[var(--accent-9)]",
 };
 
 function CheckboxShowcase() {
@@ -373,7 +373,7 @@ function CheckboxShowcase() {
               </svg>
             </CheckboxPrimitive.Indicator>
           </CheckboxPrimitive.Root>
-          <label className="text-[length:var(--font-size-2)] text-gray-700 cursor-pointer select-none">
+          <label className="text-[length:var(--font-size-2)] text-[var(--neutral-10)] cursor-pointer select-none">
             Accept terms
           </label>
         </div>
@@ -395,16 +395,16 @@ function ContextMenuShowcase() {
       render={(props) => (
         <ContextMenuPrimitive.Root>
           <ContextMenuPrimitive.Trigger asChild>
-            <div className="flex items-center justify-center w-48 h-16 border-2 border-dashed border-gray-300 rounded-[var(--radius-medium-3)] text-[length:var(--font-size-1)] text-gray-400 cursor-context-menu select-none">
+            <div className="flex items-center justify-center w-48 h-16 border-2 border-dashed border-[var(--neutral-4)] rounded-[var(--radius-medium-3)] text-[length:var(--font-size-1)] text-[var(--neutral-5)] cursor-context-menu select-none">
               Right-click here
             </div>
           </ContextMenuPrimitive.Trigger>
           <ContextMenuPrimitive.Portal>
-            <ContextMenuPrimitive.Content className="min-w-[140px] bg-white rounded-[var(--radius-medium-3)] border border-gray-200 shadow-lg p-1 z-50">
+            <ContextMenuPrimitive.Content className="min-w-[140px] bg-[var(--neutral-1)] rounded-[var(--radius-medium-3)] border border-[var(--neutral-3)] shadow-lg p-1 z-50">
               {["Edit", "Duplicate", "Delete"].map((item, i) => (
                 <ContextMenuPrimitive.Item
                   key={item}
-                  className={`flex items-center gap-[var(--spacing-2)] px-[var(--spacing-2)] py-1.5 text-[length:var(--font-size-2)] rounded cursor-pointer outline-none hover:bg-gray-100 ${i === 2 ? "text-red-600 hover:text-red-700" : "text-gray-700"}`}
+                  className={`flex items-center gap-[var(--spacing-2)] px-[var(--spacing-2)] py-1.5 text-[length:var(--font-size-2)] rounded cursor-pointer outline-none hover:bg-[var(--neutral-2)] ${i === 2 ? "text-red-600 hover:text-red-700" : "text-[var(--neutral-10)]"}`}
                 >
                   {(props.showIcons as boolean) && <span>{i === 0 ? "✏️" : i === 1 ? "📋" : "🗑️"}</span>}
                   {item}
@@ -439,8 +439,8 @@ function DataListShowcase() {
           <dl className={`${isHoriz ? "flex flex-col gap-[var(--spacing-2)]" : "flex flex-col gap-[var(--spacing-2)]"}`}>
             {items.map(({ label, value }) => (
               <div key={label} className={`${isHoriz ? "flex items-center gap-[var(--spacing-4)]" : "flex flex-col gap-[1px]"}`}>
-                <dt className="text-[length:var(--font-size-1)] font-medium text-gray-500 uppercase tracking-wide min-w-[64px]">{label}</dt>
-                <dd className="text-[length:var(--font-size-2)] text-gray-900">{value}</dd>
+                <dt className="text-[length:var(--font-size-1)] font-medium text-[var(--neutral-8)] uppercase tracking-wide min-w-[64px]">{label}</dt>
+                <dd className="text-[length:var(--font-size-2)] text-[var(--neutral-12)]">{value}</dd>
               </div>
             ))}
           </dl>
@@ -471,17 +471,17 @@ function DialogShowcase() {
       render={(props) => (
         <div className="flex flex-col items-center gap-4 w-full">
           {/* Static preview */}
-          <div className={`w-full bg-white border border-gray-200 shadow-md flex flex-col gap-[var(--spacing-3)] ${dialogSizeClasses[props.size as string] ?? dialogSizeClasses["2"]}`}>
-            <p className="font-bold text-[length:var(--font-size-4)] text-gray-900">Edit profile</p>
-            <p className="text-[length:var(--font-size-2)] text-gray-500">Update your display name and bio.</p>
+          <div className={`w-full bg-[var(--neutral-1)] border border-[var(--neutral-3)] shadow-md flex flex-col gap-[var(--spacing-3)] ${dialogSizeClasses[props.size as string] ?? dialogSizeClasses["2"]}`}>
+            <p className="font-bold text-[length:var(--font-size-4)] text-[var(--neutral-12)]">Edit profile</p>
+            <p className="text-[length:var(--font-size-2)] text-[var(--neutral-8)]">Update your display name and bio.</p>
             <div className="flex justify-end gap-[var(--spacing-2)]">
-              <button className="px-3 py-1.5 text-xs rounded bg-gray-100 text-gray-600">Cancel</button>
+              <button className="px-3 py-1.5 text-xs rounded bg-[var(--neutral-2)] text-[var(--neutral-9)]">Cancel</button>
               <button className="px-3 py-1.5 text-xs rounded bg-black text-white">Save</button>
             </div>
           </div>
           <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
             <DialogPrimitive.Trigger asChild>
-              <button className="px-3 py-1.5 text-xs font-medium bg-black text-white rounded hover:bg-gray-800 transition-colors cursor-pointer">
+              <button className="px-3 py-1.5 text-xs font-medium bg-black text-white rounded hover:bg-[var(--neutral-11)] transition-colors cursor-pointer">
                 Open live dialog
               </button>
             </DialogPrimitive.Trigger>
@@ -490,18 +490,18 @@ function DialogShowcase() {
               <DialogPrimitive.Content
                 className={[
                   "fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100vw-2rem)]",
-                  "bg-white border border-gray-200 shadow-xl flex flex-col gap-[var(--spacing-3)] focus:outline-none",
+                  "bg-[var(--neutral-1)] border border-[var(--neutral-3)] shadow-xl flex flex-col gap-[var(--spacing-3)] focus:outline-none",
                   dialogSizeClasses[props.size as string] ?? dialogSizeClasses["2"],
                 ].join(" ")}
               >
-                <DialogPrimitive.Title className="font-bold text-[length:var(--font-size-4)] text-gray-900">Edit profile</DialogPrimitive.Title>
-                <DialogPrimitive.Description className="text-[length:var(--font-size-2)] text-gray-500">Update your display name and bio.</DialogPrimitive.Description>
+                <DialogPrimitive.Title className="font-bold text-[length:var(--font-size-4)] text-[var(--neutral-12)]">Edit profile</DialogPrimitive.Title>
+                <DialogPrimitive.Description className="text-[length:var(--font-size-2)] text-[var(--neutral-8)]">Update your display name and bio.</DialogPrimitive.Description>
                 <div className="flex flex-col gap-[var(--spacing-2)]">
-                  <input className="w-full border border-gray-200 rounded px-3 py-2 text-sm outline-none focus:border-gray-400" placeholder="Display name" />
+                  <input className="w-full border border-[var(--neutral-3)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--neutral-5)]" placeholder="Display name" />
                 </div>
                 <div className="flex justify-end gap-[var(--spacing-2)]">
-                  <DialogPrimitive.Close className="px-3 py-1.5 text-xs rounded bg-gray-100 text-gray-600 cursor-pointer hover:bg-gray-200 transition-colors">Cancel</DialogPrimitive.Close>
-                  <button className="px-3 py-1.5 text-xs rounded bg-black text-white cursor-pointer hover:bg-gray-800 transition-colors">Save</button>
+                  <DialogPrimitive.Close className="px-3 py-1.5 text-xs rounded bg-[var(--neutral-2)] text-[var(--neutral-9)] cursor-pointer hover:bg-[var(--neutral-3)] transition-colors">Cancel</DialogPrimitive.Close>
+                  <button className="px-3 py-1.5 text-xs rounded bg-black text-white cursor-pointer hover:bg-[var(--neutral-11)] transition-colors">Save</button>
                 </div>
               </DialogPrimitive.Content>
             </DialogPrimitive.Portal>
@@ -525,24 +525,24 @@ function DropdownMenuShowcase() {
       render={(_props) => (
         <DropdownMenuPrimitive.Root>
           <DropdownMenuPrimitive.Trigger asChild>
-            <button className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium bg-white border border-gray-200 rounded-[var(--radius-medium-2)] shadow-sm hover:bg-gray-50 transition-colors cursor-pointer">
-              Options <span className="text-gray-400">▾</span>
+            <button className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium bg-[var(--neutral-1)] border border-[var(--neutral-3)] rounded-[var(--radius-medium-2)] shadow-sm hover:bg-[var(--neutral-1)] transition-colors cursor-pointer">
+              Options <span className="text-[var(--neutral-5)]">▾</span>
             </button>
           </DropdownMenuPrimitive.Trigger>
           <DropdownMenuPrimitive.Portal>
             <DropdownMenuPrimitive.Content
-              className="min-w-[160px] bg-white rounded-[var(--radius-medium-3)] border border-gray-200 shadow-lg p-1 z-50"
+              className="min-w-[160px] bg-[var(--neutral-1)] rounded-[var(--radius-medium-3)] border border-[var(--neutral-3)] shadow-lg p-1 z-50"
               sideOffset={4}
             >
               {["New file", "Copy link", "Settings"].map((item) => (
                 <DropdownMenuPrimitive.Item
                   key={item}
-                  className="flex items-center px-[var(--spacing-2)] py-1.5 text-[length:var(--font-size-2)] text-gray-700 rounded cursor-pointer outline-none hover:bg-gray-100"
+                  className="flex items-center px-[var(--spacing-2)] py-1.5 text-[length:var(--font-size-2)] text-[var(--neutral-10)] rounded cursor-pointer outline-none hover:bg-[var(--neutral-2)]"
                 >
                   {item}
                 </DropdownMenuPrimitive.Item>
               ))}
-              <DropdownMenuPrimitive.Separator className="my-1 h-px bg-gray-100" />
+              <DropdownMenuPrimitive.Separator className="my-1 h-px bg-[var(--neutral-2)]" />
               <DropdownMenuPrimitive.Item className="flex items-center px-[var(--spacing-2)] py-1.5 text-[length:var(--font-size-2)] text-red-600 rounded cursor-pointer outline-none hover:bg-red-50">
                 Delete
               </DropdownMenuPrimitive.Item>
@@ -567,7 +567,7 @@ function HoverCardShowcase() {
       render={(props) => (
         <HoverCardPrimitive.Root openDelay={200} closeDelay={100}>
           <HoverCardPrimitive.Trigger asChild>
-            <a href="#" className="text-[length:var(--font-size-2)] text-[var(--color-violet-11)] underline underline-offset-2 hover:text-[var(--color-violet-12)] cursor-pointer">
+            <a href="#" className="text-[length:var(--font-size-2)] text-[var(--accent-11)] underline underline-offset-2 hover:text-[var(--accent-12)] cursor-pointer">
               @designvibes
             </a>
           </HoverCardPrimitive.Trigger>
@@ -575,17 +575,17 @@ function HoverCardShowcase() {
             <HoverCardPrimitive.Content
               side={props.side as "top" | "right" | "bottom" | "left"}
               sideOffset={6}
-              className="w-64 bg-white rounded-[var(--radius-medium-4)] border border-gray-200 shadow-xl p-[var(--spacing-3)] z-50"
+              className="w-64 bg-[var(--neutral-1)] rounded-[var(--radius-medium-4)] border border-[var(--neutral-3)] shadow-xl p-[var(--spacing-3)] z-50"
             >
               <div className="flex gap-[var(--spacing-3)]">
-                <div className="w-10 h-10 rounded-full bg-[var(--color-violet-3)] flex items-center justify-center text-[var(--color-violet-11)] font-bold flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-[var(--accent-3)] flex items-center justify-center text-[var(--accent-11)] font-bold flex-shrink-0">
                   DV
                 </div>
                 <div>
-                  <p className="font-semibold text-[length:var(--font-size-2)] text-gray-900">Design Vibes</p>
-                  <p className="text-[length:var(--font-size-1)] text-gray-500">@designvibes</p>
-                  <p className="text-[length:var(--font-size-1)] text-gray-600 mt-1">Building beautiful design systems.</p>
-                  <p className="text-[length:var(--font-size-1)] text-gray-400 mt-1">Joined Jan 2024 · 128 following</p>
+                  <p className="font-semibold text-[length:var(--font-size-2)] text-[var(--neutral-12)]">Design Vibes</p>
+                  <p className="text-[length:var(--font-size-1)] text-[var(--neutral-8)]">@designvibes</p>
+                  <p className="text-[length:var(--font-size-1)] text-[var(--neutral-9)] mt-1">Building beautiful design systems.</p>
+                  <p className="text-[length:var(--font-size-1)] text-[var(--neutral-5)] mt-1">Joined Jan 2024 · 128 following</p>
                 </div>
               </div>
             </HoverCardPrimitive.Content>
@@ -605,11 +605,11 @@ const iconBtnSizeClasses: Record<string, string> = {
   "4": "w-12 h-12 text-[20px] rounded-[var(--radius-medium-4)]",
 };
 const iconBtnVariantClasses: Record<string, string> = {
-  solid: "bg-[var(--color-violet-9)] text-white hover:bg-[var(--color-violet-10)]",
-  soft: "bg-[var(--color-violet-3)] text-[var(--color-violet-11)] hover:bg-[var(--color-violet-4)]",
-  outline: "border border-[var(--color-violet-7)] text-[var(--color-violet-11)] bg-transparent hover:bg-[var(--color-violet-2)]",
-  surface: "bg-[var(--color-violet-2)] border border-[var(--color-violet-6)] text-[var(--color-violet-11)]",
-  ghost: "text-[var(--color-violet-11)] bg-transparent hover:bg-[var(--color-violet-2)]",
+  solid: "bg-[var(--accent-9)] text-white hover:bg-[var(--accent-10)]",
+  soft: "bg-[var(--accent-3)] text-[var(--accent-11)] hover:bg-[var(--accent-4)]",
+  outline: "border border-[var(--accent-7)] text-[var(--accent-11)] bg-transparent hover:bg-[var(--accent-2)]",
+  surface: "bg-[var(--accent-2)] border border-[var(--accent-6)] text-[var(--accent-11)]",
+  ghost: "text-[var(--accent-11)] bg-transparent hover:bg-[var(--accent-2)]",
 };
 
 function IconButtonShowcase() {
@@ -660,9 +660,9 @@ function InsetShowcase() {
           right: "-mr-[var(--spacing-3)] -my-[var(--spacing-3)]",
         }[side] ?? "-m-[var(--spacing-3)]";
         return (
-          <div className="w-48 p-[var(--spacing-3)] bg-white border border-gray-200 rounded-[var(--radius-medium-3)] overflow-hidden">
-            <div className={`${clip} ${margin} bg-[var(--color-violet-3)] flex items-center justify-center h-16`}>
-              <span className="text-[length:var(--font-size-1)] text-[var(--color-violet-11)] font-medium">Inset ({side})</span>
+          <div className="w-48 p-[var(--spacing-3)] bg-[var(--neutral-1)] border border-[var(--neutral-3)] rounded-[var(--radius-medium-3)] overflow-hidden">
+            <div className={`${clip} ${margin} bg-[var(--accent-3)] flex items-center justify-center h-16`}>
+              <span className="text-[length:var(--font-size-1)] text-[var(--accent-11)] font-medium">Inset ({side})</span>
             </div>
           </div>
         );
@@ -684,7 +684,7 @@ function PopoverShowcase() {
       render={(props) => (
         <PopoverPrimitive.Root>
           <PopoverPrimitive.Trigger asChild>
-            <button className="px-3 py-1.5 text-sm font-medium bg-white border border-gray-200 rounded-[var(--radius-medium-2)] shadow-sm hover:bg-gray-50 transition-colors cursor-pointer">
+            <button className="px-3 py-1.5 text-sm font-medium bg-[var(--neutral-1)] border border-[var(--neutral-3)] rounded-[var(--radius-medium-2)] shadow-sm hover:bg-[var(--neutral-1)] transition-colors cursor-pointer">
               Open popover
             </button>
           </PopoverPrimitive.Trigger>
@@ -692,14 +692,14 @@ function PopoverShowcase() {
             <PopoverPrimitive.Content
               side={props.side as "top" | "right" | "bottom" | "left"}
               sideOffset={6}
-              className="w-64 bg-white rounded-[var(--radius-medium-4)] border border-gray-200 shadow-xl p-[var(--spacing-4)] z-50"
+              className="w-64 bg-[var(--neutral-1)] rounded-[var(--radius-medium-4)] border border-[var(--neutral-3)] shadow-xl p-[var(--spacing-4)] z-50"
             >
-              <p className="font-semibold text-[length:var(--font-size-2)] text-gray-900 mb-[var(--spacing-3)]">Quick settings</p>
+              <p className="font-semibold text-[length:var(--font-size-2)] text-[var(--neutral-12)] mb-[var(--spacing-3)]">Quick settings</p>
               <div className="flex flex-col gap-[var(--spacing-2)]">
-                <label className="text-[length:var(--font-size-1)] text-gray-500">Name</label>
-                <input className="w-full border border-gray-200 rounded px-2 py-1.5 text-sm outline-none focus:border-gray-400" defaultValue="Design Vibes" />
-                <label className="text-[length:var(--font-size-1)] text-gray-500">Width</label>
-                <input className="w-full border border-gray-200 rounded px-2 py-1.5 text-sm outline-none focus:border-gray-400" defaultValue="100%" />
+                <label className="text-[length:var(--font-size-1)] text-[var(--neutral-8)]">Name</label>
+                <input className="w-full border border-[var(--neutral-3)] rounded px-2 py-1.5 text-sm outline-none focus:border-[var(--neutral-5)]" defaultValue="Design Vibes" />
+                <label className="text-[length:var(--font-size-1)] text-[var(--neutral-8)]">Width</label>
+                <input className="w-full border border-[var(--neutral-3)] rounded px-2 py-1.5 text-sm outline-none focus:border-[var(--neutral-5)]" defaultValue="100%" />
               </div>
               <PopoverPrimitive.Arrow className="fill-white" />
             </PopoverPrimitive.Content>
@@ -714,14 +714,14 @@ function PopoverShowcase() {
 
 const progressSizeH: Record<string, string> = { "1": "h-1", "2": "h-2", "3": "h-3" };
 const progressVariantClasses: Record<string, string> = {
-  classic: "bg-gray-200",
-  surface: "bg-gray-100 border border-gray-200",
-  soft: "bg-[var(--color-violet-3)]",
+  classic: "bg-[var(--neutral-3)]",
+  surface: "bg-[var(--neutral-2)] border border-[var(--neutral-3)]",
+  soft: "bg-[var(--accent-3)]",
 };
 const progressBarVariant: Record<string, string> = {
-  classic: "bg-[var(--color-violet-9)]",
-  surface: "bg-[var(--color-violet-9)]",
-  soft: "bg-[var(--color-violet-8)]",
+  classic: "bg-[var(--accent-9)]",
+  surface: "bg-[var(--accent-9)]",
+  soft: "bg-[var(--accent-8)]",
 };
 
 function ProgressShowcase() {
@@ -781,13 +781,13 @@ function RadioGroupShowcase() {
             <div key={opt} className="flex items-center gap-[var(--spacing-2)]">
               <RadioGroupPrimitive.Item
                 value={`option-${i + 1}`}
-                className={`rounded-full border-2 border-gray-300 bg-white flex items-center justify-center cursor-pointer transition-colors data-[state=checked]:border-[var(--color-violet-9)] focus:outline-none ${radioSizeClasses[props.size as string] ?? radioSizeClasses["2"]}`}
+                className={`rounded-full border-2 border-[var(--neutral-4)] bg-[var(--neutral-1)] flex items-center justify-center cursor-pointer transition-colors data-[state=checked]:border-[var(--accent-9)] focus:outline-none ${radioSizeClasses[props.size as string] ?? radioSizeClasses["2"]}`}
               >
                 <RadioGroupPrimitive.Indicator
-                  className="w-1.5 h-1.5 rounded-full bg-[var(--color-violet-9)]"
+                  className="w-1.5 h-1.5 rounded-full bg-[var(--accent-9)]"
                 />
               </RadioGroupPrimitive.Item>
-              <label className="text-[length:var(--font-size-2)] text-gray-700 cursor-pointer">{opt}</label>
+              <label className="text-[length:var(--font-size-2)] text-[var(--neutral-10)] cursor-pointer">{opt}</label>
             </div>
           ))}
         </RadioGroupPrimitive.Root>
@@ -809,12 +809,12 @@ function ScrollAreaShowcase() {
       render={(props) => (
         <ScrollAreaPrimitive.Root
           type={props.type as "auto" | "always"}
-          className="w-48 h-36 rounded-[var(--radius-medium-3)] border border-gray-200 bg-white overflow-hidden"
+          className="w-48 h-36 rounded-[var(--radius-medium-3)] border border-[var(--neutral-3)] bg-[var(--neutral-1)] overflow-hidden"
         >
           <ScrollAreaPrimitive.Viewport className="w-full h-full">
             <div className="p-[var(--spacing-2)]">
               {Array.from({ length: 20 }, (_, i) => (
-                <div key={i} className="py-1 px-[var(--spacing-2)] text-[length:var(--font-size-1)] text-gray-600 hover:bg-gray-50 rounded">
+                <div key={i} className="py-1 px-[var(--spacing-2)] text-[length:var(--font-size-1)] text-[var(--neutral-9)] hover:bg-[var(--neutral-1)] rounded">
                   Item {i + 1}
                 </div>
               ))}
@@ -822,9 +822,9 @@ function ScrollAreaShowcase() {
           </ScrollAreaPrimitive.Viewport>
           <ScrollAreaPrimitive.Scrollbar
             orientation="vertical"
-            className="flex select-none touch-none p-0.5 bg-gray-100 transition-colors w-2.5"
+            className="flex select-none touch-none p-0.5 bg-[var(--neutral-2)] transition-colors w-2.5"
           >
-            <ScrollAreaPrimitive.Thumb className="flex-1 bg-gray-300 rounded-full relative" />
+            <ScrollAreaPrimitive.Thumb className="flex-1 bg-[var(--neutral-4)] rounded-full relative" />
           </ScrollAreaPrimitive.Scrollbar>
         </ScrollAreaPrimitive.Root>
       )}
@@ -840,9 +840,9 @@ const selectSizeClasses: Record<string, string> = {
   "3": "h-10 px-[var(--spacing-4)] text-[length:var(--font-size-3)] rounded-[var(--radius-medium-3)]",
 };
 const selectVariantClasses: Record<string, string> = {
-  classic: "bg-white border border-gray-300 text-gray-700 shadow-sm",
-  surface: "bg-gray-50 border border-gray-200 text-gray-700",
-  soft: "bg-gray-100 border-transparent text-gray-700",
+  classic: "bg-[var(--neutral-1)] border border-[var(--neutral-4)] text-[var(--neutral-10)] shadow-sm",
+  surface: "bg-[var(--neutral-1)] border border-[var(--neutral-3)] text-[var(--neutral-10)]",
+  soft: "bg-[var(--neutral-2)] border-transparent text-[var(--neutral-10)]",
 };
 
 function SelectShowcase() {
@@ -860,16 +860,16 @@ function SelectShowcase() {
             className={`inline-flex items-center justify-between gap-[var(--spacing-2)] cursor-pointer outline-none border ${selectSizeClasses[props.size as string] ?? selectSizeClasses["2"]} ${selectVariantClasses[props.variant as string] ?? selectVariantClasses["classic"]}`}
           >
             <SelectPrimitive.Value />
-            <SelectPrimitive.Icon className="text-gray-400">▾</SelectPrimitive.Icon>
+            <SelectPrimitive.Icon className="text-[var(--neutral-5)]">▾</SelectPrimitive.Icon>
           </SelectPrimitive.Trigger>
           <SelectPrimitive.Portal>
-            <SelectPrimitive.Content className="bg-white rounded-[var(--radius-medium-3)] border border-gray-200 shadow-xl z-50 overflow-hidden">
+            <SelectPrimitive.Content className="bg-[var(--neutral-1)] rounded-[var(--radius-medium-3)] border border-[var(--neutral-3)] shadow-xl z-50 overflow-hidden">
               <SelectPrimitive.Viewport className="p-1">
                 {["Apple", "Banana", "Cherry", "Grape", "Mango"].map((fruit) => (
                   <SelectPrimitive.Item
                     key={fruit}
                     value={fruit.toLowerCase()}
-                    className="flex items-center px-[var(--spacing-2)] py-1.5 text-[length:var(--font-size-2)] text-gray-700 rounded cursor-pointer outline-none hover:bg-gray-100 data-[highlighted]:bg-gray-100"
+                    className="flex items-center px-[var(--spacing-2)] py-1.5 text-[length:var(--font-size-2)] text-[var(--neutral-10)] rounded cursor-pointer outline-none hover:bg-[var(--neutral-2)] data-[highlighted]:bg-[var(--neutral-2)]"
                   >
                     <SelectPrimitive.ItemText>{fruit}</SelectPrimitive.ItemText>
                   </SelectPrimitive.Item>
@@ -886,8 +886,8 @@ function SelectShowcase() {
 // ── Separator ─────────────────────────────────────────────────────────────────
 
 const separatorColorClasses: Record<string, string> = {
-  gray: "bg-gray-200",
-  accent: "bg-[var(--color-violet-6)]",
+  gray: "bg-[var(--neutral-3)]",
+  accent: "bg-[var(--accent-6)]",
 };
 
 function SeparatorShowcase() {
@@ -930,7 +930,7 @@ function SkeletonShowcase() {
           ].map(({ w, h }, i) => (
             <div
               key={i}
-              className={`${w} ${h} rounded bg-gray-200 ${props.pulse ? "animate-pulse" : ""}`}
+              className={`${w} ${h} rounded bg-[var(--neutral-3)] ${props.pulse ? "animate-pulse" : ""}`}
             />
           ))}
         </div>
@@ -970,11 +970,11 @@ function SliderShowcase() {
             className={`relative flex touch-none select-none items-center ${isVert ? "flex-col h-32 w-3" : "w-48 h-3"}`}
           >
             <SliderPrimitive.Track
-              className={`relative grow overflow-hidden rounded-full bg-gray-200 ${isVert ? `w-full ${sliderSizeClasses[props.size as string] ?? sliderSizeClasses["2"]}` : `h-full ${sliderSizeClasses[props.size as string] ?? sliderSizeClasses["2"]}`}`}
+              className={`relative grow overflow-hidden rounded-full bg-[var(--neutral-3)] ${isVert ? `w-full ${sliderSizeClasses[props.size as string] ?? sliderSizeClasses["2"]}` : `h-full ${sliderSizeClasses[props.size as string] ?? sliderSizeClasses["2"]}`}`}
             >
-              <SliderPrimitive.Range className="absolute bg-[var(--color-violet-9)] rounded-full h-full" />
+              <SliderPrimitive.Range className="absolute bg-[var(--accent-9)] rounded-full h-full" />
             </SliderPrimitive.Track>
-            <SliderPrimitive.Thumb className="block w-4 h-4 rounded-full border-2 border-[var(--color-violet-9)] bg-white shadow cursor-grab active:cursor-grabbing focus:outline-none" />
+            <SliderPrimitive.Thumb className="block w-4 h-4 rounded-full border-2 border-[var(--accent-9)] bg-[var(--neutral-1)] shadow cursor-grab active:cursor-grabbing focus:outline-none" />
           </SliderPrimitive.Root>
         );
       }}
@@ -1002,8 +1002,8 @@ function SpinnerShowcase() {
       ]}
       render={(props) => (
         <div
-          className={`rounded-full border-gray-200 border-t-[var(--color-violet-9)] animate-spin ${spinnerSizeClasses[props.size as string] ?? spinnerSizeClasses["3"]}`}
-          style={{ borderTopColor: "var(--color-violet-9)" }}
+          className={`rounded-full border-[var(--neutral-3)] border-t-[var(--accent-9)] animate-spin ${spinnerSizeClasses[props.size as string] ?? spinnerSizeClasses["3"]}`}
+          style={{ borderTopColor: "var(--accent-9)" }}
         />
       )}
     />
@@ -1023,9 +1023,9 @@ const switchThumbSize: Record<string, string> = {
   "3": "w-5 h-5 data-[state=checked]:translate-x-5",
 };
 const switchVariantClasses: Record<string, string> = {
-  classic: "data-[state=unchecked]:bg-gray-200 data-[state=checked]:bg-[var(--color-violet-9)]",
-  surface: "data-[state=unchecked]:bg-gray-100 border border-gray-300 data-[state=checked]:bg-[var(--color-violet-9)]",
-  soft: "data-[state=unchecked]:bg-[var(--color-violet-3)] data-[state=checked]:bg-[var(--color-violet-7)]",
+  classic: "data-[state=unchecked]:bg-[var(--neutral-3)] data-[state=checked]:bg-[var(--accent-9)]",
+  surface: "data-[state=unchecked]:bg-[var(--neutral-2)] border border-[var(--neutral-4)] data-[state=checked]:bg-[var(--accent-9)]",
+  soft: "data-[state=unchecked]:bg-[var(--accent-3)] data-[state=checked]:bg-[var(--accent-7)]",
 };
 
 function SwitchShowcase() {
@@ -1044,7 +1044,7 @@ function SwitchShowcase() {
           className={`relative inline-flex items-center rounded-full cursor-pointer transition-colors focus:outline-none ${switchSizeClasses[props.size as string] ?? switchSizeClasses["2"]} ${switchVariantClasses[props.variant as string] ?? switchVariantClasses["classic"]}`}
         >
           <SwitchPrimitive.Thumb
-            className={`block rounded-full bg-white shadow transition-transform translate-x-0.5 ${switchThumbSize[props.size as string] ?? switchThumbSize["2"]}`}
+            className={`block rounded-full bg-[var(--neutral-1)] shadow transition-transform translate-x-0.5 ${switchThumbSize[props.size as string] ?? switchThumbSize["2"]}`}
           />
         </SwitchPrimitive.Root>
       )}
@@ -1056,7 +1056,7 @@ function SwitchShowcase() {
 
 const tableVariantClasses: Record<string, string> = {
   ghost: "bg-transparent",
-  surface: "bg-white border border-gray-200 rounded-[var(--radius-medium-3)] overflow-hidden",
+  surface: "bg-[var(--neutral-1)] border border-[var(--neutral-3)] rounded-[var(--radius-medium-3)] overflow-hidden",
 };
 
 function TableShowcase() {
@@ -1071,10 +1071,10 @@ function TableShowcase() {
         <div className={`w-full max-w-xs text-[length:var(--font-size-1)] ${tableVariantClasses[props.variant as string] ?? tableVariantClasses["surface"]}`}>
           <table className="w-full border-collapse">
             <thead>
-              <tr className="border-b border-gray-200 bg-gray-50">
-                <th className="px-[var(--spacing-3)] py-2 text-left font-medium text-gray-500">Name</th>
-                <th className="px-[var(--spacing-3)] py-2 text-left font-medium text-gray-500">Role</th>
-                <th className="px-[var(--spacing-3)] py-2 text-left font-medium text-gray-500">Status</th>
+              <tr className="border-b border-[var(--neutral-3)] bg-[var(--neutral-1)]">
+                <th className="px-[var(--spacing-3)] py-2 text-left font-medium text-[var(--neutral-8)]">Name</th>
+                <th className="px-[var(--spacing-3)] py-2 text-left font-medium text-[var(--neutral-8)]">Role</th>
+                <th className="px-[var(--spacing-3)] py-2 text-left font-medium text-[var(--neutral-8)]">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -1084,11 +1084,11 @@ function TableShowcase() {
                 { name: "Carol", role: "Viewer", status: "Active" },
                 { name: "Dave", role: "Editor", status: "Active" },
               ].map((row) => (
-                <tr key={row.name} className="border-b border-gray-100 last:border-0">
-                  <td className="px-[var(--spacing-3)] py-2 text-gray-900">{row.name}</td>
-                  <td className="px-[var(--spacing-3)] py-2 text-gray-600">{row.role}</td>
+                <tr key={row.name} className="border-b border-[var(--neutral-2)] last:border-0">
+                  <td className="px-[var(--spacing-3)] py-2 text-[var(--neutral-12)]">{row.name}</td>
+                  <td className="px-[var(--spacing-3)] py-2 text-[var(--neutral-9)]">{row.role}</td>
                   <td className="px-[var(--spacing-3)] py-2">
-                    <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-medium ${row.status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
+                    <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-medium ${row.status === "Active" ? "bg-green-100 text-green-700" : "bg-[var(--neutral-2)] text-[var(--neutral-8)]"}`}>
                       {row.status}
                     </span>
                   </td>
@@ -1106,14 +1106,14 @@ function TableShowcase() {
 
 const tabsVariantClasses: Record<string, { list: string; trigger: string; activeTrigger: string }> = {
   line: {
-    list: "flex border-b border-gray-200",
-    trigger: "px-[var(--spacing-3)] py-2 text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition-colors cursor-pointer -mb-px",
-    activeTrigger: "border-[var(--color-violet-9)] text-[var(--color-violet-11)] font-medium",
+    list: "flex border-b border-[var(--neutral-3)]",
+    trigger: "px-[var(--spacing-3)] py-2 text-[var(--neutral-8)] border-b-2 border-transparent hover:text-[var(--neutral-10)] transition-colors cursor-pointer -mb-px",
+    activeTrigger: "border-[var(--accent-9)] text-[var(--accent-11)] font-medium",
   },
   enclosed: {
-    list: "flex gap-1 p-1 bg-gray-100 rounded-[var(--radius-medium-3)]",
-    trigger: "px-[var(--spacing-3)] py-1.5 text-gray-500 rounded-[var(--radius-medium-2)] hover:text-gray-700 transition-colors cursor-pointer",
-    activeTrigger: "bg-white text-gray-900 font-medium shadow-sm",
+    list: "flex gap-1 p-1 bg-[var(--neutral-2)] rounded-[var(--radius-medium-3)]",
+    trigger: "px-[var(--spacing-3)] py-1.5 text-[var(--neutral-8)] rounded-[var(--radius-medium-2)] hover:text-[var(--neutral-10)] transition-colors cursor-pointer",
+    activeTrigger: "bg-[var(--neutral-1)] text-[var(--neutral-12)] font-medium shadow-sm",
   },
 };
 
@@ -1144,7 +1144,7 @@ function TabsShowcase() {
               ))}
             </TabsPrimitive.List>
             {["Account settings and profile info.", "Password and two-factor auth.", "Plans, billing history, invoices."].map((content, i) => (
-              <TabsPrimitive.Content key={i} value={`tab-${i + 1}`} className={`pt-[var(--spacing-3)] ${fontSize} text-gray-600`}>
+              <TabsPrimitive.Content key={i} value={`tab-${i + 1}`} className={`pt-[var(--spacing-3)] ${fontSize} text-[var(--neutral-9)]`}>
                 {content}
               </TabsPrimitive.Content>
             ))}
@@ -1163,9 +1163,9 @@ const textAreaSizeClasses: Record<string, string> = {
   "3": "text-[length:var(--font-size-3)] rounded-[var(--radius-medium-4)] px-[var(--spacing-4)] py-[var(--spacing-3)]",
 };
 const textAreaVariantClasses: Record<string, string> = {
-  classic: "bg-white border border-gray-300 text-gray-900 shadow-sm",
-  surface: "bg-gray-50 border border-gray-200 text-gray-900",
-  soft: "bg-gray-100 border-transparent text-gray-900",
+  classic: "bg-[var(--neutral-1)] border border-[var(--neutral-4)] text-[var(--neutral-12)] shadow-sm",
+  surface: "bg-[var(--neutral-1)] border border-[var(--neutral-3)] text-[var(--neutral-12)]",
+  soft: "bg-[var(--neutral-2)] border-transparent text-[var(--neutral-12)]",
 };
 const textAreaResizeClasses: Record<string, string> = {
   none: "resize-none",
@@ -1187,7 +1187,7 @@ function TextAreaShowcase() {
         <textarea
           rows={3}
           placeholder="Type something..."
-          className={`w-48 outline-none focus:border-gray-400 transition-colors ${textAreaSizeClasses[props.size as string] ?? textAreaSizeClasses["2"]} ${textAreaVariantClasses[props.variant as string] ?? textAreaVariantClasses["classic"]} ${textAreaResizeClasses[props.resize as string] ?? textAreaResizeClasses["vertical"]}`}
+          className={`w-48 outline-none focus:border-[var(--neutral-5)] transition-colors ${textAreaSizeClasses[props.size as string] ?? textAreaSizeClasses["2"]} ${textAreaVariantClasses[props.variant as string] ?? textAreaVariantClasses["classic"]} ${textAreaResizeClasses[props.resize as string] ?? textAreaResizeClasses["vertical"]}`}
         />
       )}
     />
@@ -1202,9 +1202,9 @@ const textFieldSizeClasses: Record<string, string> = {
   "3": "h-10 px-[var(--spacing-4)] text-[length:var(--font-size-3)] rounded-[var(--radius-medium-3)]",
 };
 const textFieldVariantClasses: Record<string, string> = {
-  classic: "bg-white border border-gray-300 text-gray-900 shadow-sm",
-  surface: "bg-gray-50 border border-gray-200 text-gray-900",
-  soft: "bg-gray-100 border-transparent text-gray-900",
+  classic: "bg-[var(--neutral-1)] border border-[var(--neutral-4)] text-[var(--neutral-12)] shadow-sm",
+  surface: "bg-[var(--neutral-1)] border border-[var(--neutral-3)] text-[var(--neutral-12)]",
+  soft: "bg-[var(--neutral-2)] border-transparent text-[var(--neutral-12)]",
 };
 
 function TextFieldShowcase() {
@@ -1221,7 +1221,7 @@ function TextFieldShowcase() {
         <input
           type={props.type as string}
           placeholder={props.type === "email" ? "you@example.com" : props.type === "password" ? "••••••••" : "Enter text..."}
-          className={`w-48 outline-none focus:border-gray-400 transition-colors border ${textFieldSizeClasses[props.size as string] ?? textFieldSizeClasses["2"]} ${textFieldVariantClasses[props.variant as string] ?? textFieldVariantClasses["classic"]}`}
+          className={`w-48 outline-none focus:border-[var(--neutral-5)] transition-colors border ${textFieldSizeClasses[props.size as string] ?? textFieldSizeClasses["2"]} ${textFieldVariantClasses[props.variant as string] ?? textFieldVariantClasses["classic"]}`}
         />
       )}
     />
@@ -1262,13 +1262,13 @@ function ToggleGroupShowcase() {
               type="multiple"
               value={multiVal}
               onValueChange={setMultiVal}
-              className="inline-flex rounded-[var(--radius-medium-2)] border border-gray-200 overflow-hidden"
+              className="inline-flex rounded-[var(--radius-medium-2)] border border-[var(--neutral-3)] overflow-hidden"
             >
               {options.map(({ value, label }) => (
                 <ToggleGroupPrimitive.Item
                   key={value}
                   value={value}
-                  className={`inline-flex items-center justify-center font-medium cursor-pointer transition-colors border-r border-gray-200 last:border-0 bg-white text-gray-600 hover:bg-gray-50 data-[state=on]:bg-[var(--color-violet-3)] data-[state=on]:text-[var(--color-violet-11)] focus:outline-none ${sz}`}
+                  className={`inline-flex items-center justify-center font-medium cursor-pointer transition-colors border-r border-[var(--neutral-3)] last:border-0 bg-[var(--neutral-1)] text-[var(--neutral-9)] hover:bg-[var(--neutral-1)] data-[state=on]:bg-[var(--accent-3)] data-[state=on]:text-[var(--accent-11)] focus:outline-none ${sz}`}
                 >
                   {label}
                 </ToggleGroupPrimitive.Item>
@@ -1282,13 +1282,13 @@ function ToggleGroupShowcase() {
             type="single"
             value={singleVal}
             onValueChange={(v) => { if (v) setSingleVal(v); }}
-            className="inline-flex rounded-[var(--radius-medium-2)] border border-gray-200 overflow-hidden"
+            className="inline-flex rounded-[var(--radius-medium-2)] border border-[var(--neutral-3)] overflow-hidden"
           >
             {options.map(({ value, label }) => (
               <ToggleGroupPrimitive.Item
                 key={value}
                 value={value}
-                className={`inline-flex items-center justify-center font-medium cursor-pointer transition-colors border-r border-gray-200 last:border-0 bg-white text-gray-600 hover:bg-gray-50 data-[state=on]:bg-[var(--color-violet-3)] data-[state=on]:text-[var(--color-violet-11)] focus:outline-none ${sz}`}
+                className={`inline-flex items-center justify-center font-medium cursor-pointer transition-colors border-r border-[var(--neutral-3)] last:border-0 bg-[var(--neutral-1)] text-[var(--neutral-9)] hover:bg-[var(--neutral-1)] data-[state=on]:bg-[var(--accent-3)] data-[state=on]:text-[var(--accent-11)] focus:outline-none ${sz}`}
               >
                 {label}
               </ToggleGroupPrimitive.Item>
@@ -1314,7 +1314,7 @@ function TooltipShowcase() {
         <TooltipPrimitive.Provider delayDuration={200}>
           <TooltipPrimitive.Root>
             <TooltipPrimitive.Trigger asChild>
-              <button className="px-3 py-1.5 text-sm font-medium bg-white border border-gray-200 rounded-[var(--radius-medium-2)] shadow-sm hover:bg-gray-50 transition-colors cursor-pointer">
+              <button className="px-3 py-1.5 text-sm font-medium bg-[var(--neutral-1)] border border-[var(--neutral-3)] rounded-[var(--radius-medium-2)] shadow-sm hover:bg-[var(--neutral-1)] transition-colors cursor-pointer">
                 Hover me
               </button>
             </TooltipPrimitive.Trigger>
@@ -1322,7 +1322,7 @@ function TooltipShowcase() {
               <TooltipPrimitive.Content
                 side={props.side as "top" | "right" | "bottom" | "left"}
                 sideOffset={6}
-                className="bg-gray-900 text-white text-[length:var(--font-size-1)] px-[var(--spacing-2)] py-1 rounded-[var(--radius-medium-2)] shadow-lg z-50 max-w-[200px]"
+                className="bg-[var(--neutral-12)] text-white text-[length:var(--font-size-1)] px-[var(--spacing-2)] py-1 rounded-[var(--radius-medium-2)] shadow-lg z-50 max-w-[200px]"
               >
                 Tooltip content
                 <TooltipPrimitive.Arrow className="fill-gray-900" />

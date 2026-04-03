@@ -171,11 +171,22 @@ for (const collection of data.collections) {
   }
 }
 
+// Semantic aliases — stable short names that point to the theme's chosen scales
+const semanticAliases = [
+  ...Array.from({ length: 12 }, (_, i) => `  --accent-${i + 1}: var(--theme-accent-${i + 1});`),
+  ...Array.from({ length: 12 }, (_, i) => `  --accent-alpha-${i + 1}: var(--theme-accent-alpha-${i + 1});`),
+  ...Array.from({ length: 12 }, (_, i) => `  --neutral-${i + 1}: var(--theme-neutral-${i + 1});`),
+  ...Array.from({ length: 12 }, (_, i) => `  --neutral-alpha-${i + 1}: var(--theme-neutral-alpha-${i + 1});`),
+];
+
 const css = `/* Auto-generated from Figma variables — do not edit manually */
 /* Run: node scripts/build-tokens.mjs */
 
 :root {
 ${rootVars.join("\n")}
+
+  /* ── Semantic aliases (point components here, not at --theme-*) ── */
+${semanticAliases.join("\n")}
 }
 
 @theme inline {
