@@ -13,13 +13,13 @@ import {
   getScalingTokens,
   getResponsiveSizes,
 } from "@/lib/design-tokens";
-import FoundationsClient from "./components/FoundationsClient";
+import DesignSystemShell from "./components/DesignSystemShell";
 
 export default function DesignSystemPage() {
   return (
     <main className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-2xl font-semibold mb-6">Design System</h1>
-      <FoundationsClient
+      <h1 className="text-2xl font-semibold mb-8">Design System</h1>
+      <DesignSystemShell
         colorFamilies={getColorFamilies()}
         variableColors={getVariableColors()}
         semanticColorFamilies={getSemanticColorFamilies()}
