@@ -1,11 +1,17 @@
 import {
   getColorFamilies,
+  getVariableColors,
   getSemanticColorFamilies,
+  getPanelTokens,
+  getTokenColors,
+  getThemeRadiusTokens,
+  getTokenSpaceTokens,
   getTypographyScale,
   getFontInfo,
   getSpacingTokens,
   getRadiusTokens,
   getScalingTokens,
+  getResponsiveSizes,
 } from "@/lib/design-tokens";
 import FoundationsClient from "./components/FoundationsClient";
 
@@ -15,12 +21,18 @@ export default function DesignSystemPage() {
       <h1 className="text-2xl font-semibold mb-6">Design System</h1>
       <FoundationsClient
         colorFamilies={getColorFamilies()}
+        variableColors={getVariableColors()}
         semanticColorFamilies={getSemanticColorFamilies()}
+        panelTokens={getPanelTokens()}
+        tokenColors={getTokenColors()}
+        themeRadiusTokens={getThemeRadiusTokens()}
+        tokenSpaceTokens={getTokenSpaceTokens()}
         typographyScale={getTypographyScale()}
         fontInfo={getFontInfo()}
         spacingTokens={getSpacingTokens()}
         radiusTokens={getRadiusTokens()}
         scalingTokens={getScalingTokens()}
+        responsiveSizes={getResponsiveSizes()}
       />
     </main>
   );
