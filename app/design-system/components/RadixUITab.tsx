@@ -14,39 +14,21 @@ export default function RadixUITab() {
           { type: "toggle", label: "Inset Content", key: "insetContent" },
           { type: "toggle", label: "Description", key: "showDescription" },
         ]}
-        preview={(props, open, setOpen) => (
-          <>
-            <button
-              onClick={() => setOpen(true)}
-              className="px-3 py-1.5 text-xs font-medium bg-black text-white rounded hover:bg-gray-800 transition-colors cursor-pointer"
-            >
-              Open Dialog
-            </button>
-            <AlertDialog
-              open={open}
-              onOpenChange={setOpen}
-              size={props.size as AlertDialogSize}
-              insetContent={props.insetContent as boolean}
-              showDescription={props.showDescription as boolean}
-            />
-          </>
+        preview={(props) => (
+          <AlertDialog
+            inline
+            size={props.size as AlertDialogSize}
+            insetContent={props.insetContent as boolean}
+            showDescription={props.showDescription as boolean}
+          />
         )}
-        render={(props, open, setOpen) => (
-          <>
-            <button
-              onClick={() => setOpen(true)}
-              className="px-3 py-1.5 text-xs font-medium bg-black text-white rounded hover:bg-gray-800 transition-colors cursor-pointer"
-            >
-              Open Alert Dialog
-            </button>
-            <AlertDialog
-              open={open}
-              onOpenChange={setOpen}
-              size={props.size as AlertDialogSize}
-              insetContent={props.insetContent as boolean}
-              showDescription={props.showDescription as boolean}
-            />
-          </>
+        render={(props) => (
+          <AlertDialog
+            inline
+            size={props.size as AlertDialogSize}
+            insetContent={props.insetContent as boolean}
+            showDescription={props.showDescription as boolean}
+          />
         )}
       />
     </div>

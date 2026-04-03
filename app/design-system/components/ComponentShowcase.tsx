@@ -11,14 +11,13 @@ interface Props {
   name: string;
   controls: ControlDef[];
   defaultProps: Record<string, unknown>;
-  render: (props: Record<string, unknown>, open: boolean, setOpen: (v: boolean) => void) => React.ReactNode;
-  preview: (props: Record<string, unknown>, open: boolean, setOpen: (v: boolean) => void) => React.ReactNode;
+  render: (props: Record<string, unknown>) => React.ReactNode;
+  preview: (props: Record<string, unknown>) => React.ReactNode;
 }
 
 export default function ComponentShowcase({ name, controls, defaultProps, render, preview }: Props) {
   const [expanded, setExpanded] = useState(false);
   const [props, setProps] = useState<Record<string, unknown>>(defaultProps);
-  const [dialogOpen, setDialogOpen] = useState(false);
 
   function setProp(key: string, value: unknown) {
     setProps((p) => ({ ...p, [key]: value }));
@@ -28,18 +27,17 @@ export default function ComponentShowcase({ name, controls, defaultProps, render
     <Collapsible.Root open={expanded} onOpenChange={setExpanded}>
       {/* Row header — always visible */}
       <div className="flex items-center justify-between py-4 border-b border-gray-100">
-        <div className="flex items-center gap-4">
-          <Collapsible.Trigger className="flex items-center gap-2 cursor-pointer group">
-            <span className="text-xs text-gray-400 group-hover:text-gray-600 transition-colors select-none w-3">
-              {expanded ? "▼" : "▶"}
-            </span>
-            <span className="text-sm font-medium text-gray-800">{name}</span>
-          </Collapsible.Trigger>
-        </div>
+        <Collapsible.Trigger className="flex items-center gap-2 cursor-pointer group">
+          <span className="text-xs text-gray-400 group-hover:text-gray-600 transition-colors select-none w-3">
+            {expanded ? "▼" : "▶"}
+          </span>
+          <span className="text-sm font-medium text-gray-800">{name}</span>
+        </Collapsible.Trigger>
+
         {/* Compact preview in collapsed state */}
         {!expanded && (
           <div className="flex items-center">
-            {preview(props, dialogOpen, setDialogOpen)}
+            {preview(props)}
           </div>
         )}
       </div>
@@ -92,7 +90,7 @@ export default function ComponentShowcase({ name, controls, defaultProps, render
 
           {/* Component preview */}
           <div className="flex items-center justify-center min-h-32 bg-gray-50 rounded-lg p-8 border border-gray-100">
-            {render(props, dialogOpen, setDialogOpen)}
+            {render(props)}
           </div>
         </div>
       </Collapsible.Content>

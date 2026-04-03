@@ -5,8 +5,9 @@ import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 export type AlertDialogSize = "1" | "2" | "3" | "4";
 
 interface AlertDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  inline?: boolean;
   size?: AlertDialogSize;
   insetContent?: boolean;
   showDescription?: boolean;
@@ -64,9 +65,64 @@ const sizeStyles = {
   },
 } as const;
 
+function AlertDialogPanel({
+  size = "3",
+  insetContent = false,
+  showDescription = true,
+  title = "Title",
+  description = "Description",
+  cancelLabel = "Cancel",
+  actionLabel = "Action",
+  children,
+  onCancel,
+  onAction,
+}: Omit<AlertDialogProps, "open" | "onOpenChange" | "inline"> & {
+  onCancel?: () => void;
+  onAction?: () => void;
+}) {
+  const s = sizeStyles[size!];
+  return (
+    <div
+      className={[
+        "bg-white flex flex-col items-start max-h-[690px] overflow-y-auto",
+        "border border-[rgba(0,0,51,0.06)] shadow-[0px_16px_36px_-20px_rgba(0,6,46,0.2),0px_16px_64px_0px_rgba(0,0,85,0.02),0px_12px_60px_0px_rgba(0,0,0,0.15)]",
+        s.panel,
+        s.width,
+      ].join(" ")}
+    >
+      <div className={`flex flex-col items-start w-full shrink-0 ${s.text}`}>
+        <p className={`w-full text-gray-900 ${s.title}`}>{title}</p>
+        {showDescription && (
+          <p className={`w-full text-gray-900 font-normal ${s.desc}`}>{description}</p>
+        )}
+      </div>
+      {insetContent && (
+        <div className={`w-full shrink-0 overflow-clip ${s.slot}`}>
+          {children ?? <div className="border border-dashed border-gray-300 rounded h-[120px] w-full" />}
+        </div>
+      )}
+      <div className={`flex items-center justify-end w-full shrink-0 ${s.buttons}`}>
+        <button
+          onClick={onCancel}
+          className={`flex items-center justify-center font-medium bg-[rgba(0,0,51,0.06)] text-gray-600 cursor-pointer hover:bg-[rgba(0,0,51,0.1)] transition-colors ${s.cancelBtn}`}
+        >
+          {cancelLabel}
+        </button>
+        <button
+          onClick={onAction}
+          className={`flex items-center justify-center font-medium bg-[#fa4b41] text-white cursor-pointer hover:bg-[#e5413a] transition-colors ${s.actionBtn}`}
+        >
+          {actionLabel}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function AlertDialog({
   open,
   onOpenChange,
+  inline = false,
   size = "3",
   insetContent = false,
   showDescription = true,
@@ -77,6 +133,22 @@ export function AlertDialog({
   children,
 }: AlertDialogProps) {
   const s = sizeStyles[size];
+
+  if (inline) {
+    return (
+      <AlertDialogPanel
+        size={size}
+        insetContent={insetContent}
+        showDescription={showDescription}
+        title={title}
+        description={description}
+        cancelLabel={cancelLabel}
+        actionLabel={actionLabel}
+      >
+        {children}
+      </AlertDialogPanel>
+    );
+  }
 
   return (
     <AlertDialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
