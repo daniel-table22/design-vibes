@@ -3,6 +3,7 @@
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import RadixUITab from "./RadixUITab";
+import CoreRadixTab from "./CoreRadixTab";
 import type {
   ColorFamily,
   NamedColorToken,
@@ -125,14 +126,15 @@ export default function FoundationsClient({
   return (
     <Tabs.Root defaultValue="foundations">
       <Tabs.List className="flex gap-6 border-b border-gray-200 mb-8">
-        {["foundations", "radix-ui", "custom-atoms", "custom-molecules", "custom-organisms"].map((value) => (
+        {["foundations", "core-radix", "radix-ui", "custom-atoms", "custom-molecules", "custom-organisms"].map((value) => (
           <Tabs.Trigger
             key={value}
             value={value}
             className="pb-3 text-sm font-medium text-gray-500 border-b-2 border-transparent data-[state=active]:border-black data-[state=active]:text-black cursor-pointer whitespace-nowrap"
           >
             {value === "foundations" ? "Foundations"
-              : value === "radix-ui" ? "Radix UI"
+              : value === "core-radix" ? "Core Radix"
+              : value === "radix-ui" ? "Radix UI (Figma)"
               : value === "custom-atoms" ? "Custom Atoms"
               : value === "custom-molecules" ? "Custom Molecules"
               : "Custom Organisms"}
@@ -390,6 +392,10 @@ export default function FoundationsClient({
           </table>
         </section>
 
+      </Tabs.Content>
+
+      <Tabs.Content value="core-radix">
+        <CoreRadixTab />
       </Tabs.Content>
 
       <Tabs.Content value="radix-ui">
