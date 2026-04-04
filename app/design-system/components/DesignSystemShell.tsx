@@ -6,6 +6,7 @@ import CoreRadixLayout from "./CoreRadixLayout";
 import CoreRadixTypography from "./CoreRadixTypography";
 import CoreRadixTab from "./CoreRadixTab";
 import CustomOrganismsContent from "./CustomOrganismsContent";
+import MemberPortalHome from "../templates/member-portal/MemberPortalHome";
 
 // ── Section type ─────────────────────────────────────────────────────────────
 
@@ -143,7 +144,7 @@ export default function DesignSystemShell(props: FoundationsProps) {
         {active === "custom/organisms"         && <CustomOrganismsContent />}
         {active === "templates/partner/template"       && <EmptySection title="Partner — Template" />}
         {active === "templates/storefront/template"    && <EmptySection title="Storefront — Template" />}
-        {active === "templates/member-portal/template" && <EmptySection title="Member Portal — Template" />}
+        {active === "templates/member-portal/template" && <MemberPortalHome />}
       </main>
     </div>
   );
