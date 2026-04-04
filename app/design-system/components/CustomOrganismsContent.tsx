@@ -1,7 +1,7 @@
 "use client";
 
 import ComponentShowcase from "./ComponentShowcase";
-import { MembershipCard } from "@/components/custom/organisms/membership-card";
+import { MemberClubCard } from "@/components/custom/organisms/member-club-card";
 import { MemberBanner } from "@/components/custom/organisms/member-banner";
 
 export default function CustomOrganismsContent() {
@@ -18,7 +18,7 @@ export default function CustomOrganismsContent() {
           { type: "toggle", label: "Callout", key: "callout" },
         ]}
         render={(props) => (
-          <MembershipCard
+          <MemberClubCard
             imageSrc="/photos/club-hero-1.jpg"
             gift={props.gift as boolean}
             fulfillment={props.fulfillment ? "Delivery on Monday 12/13" : undefined}

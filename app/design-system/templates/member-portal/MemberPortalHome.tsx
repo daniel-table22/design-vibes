@@ -1,6 +1,6 @@
 "use client";
 
-import { MembershipCard } from "@/components/custom/organisms/membership-card";
+import { MemberClubCard } from "@/components/custom/organisms/member-club-card";
 import { MemberBanner } from "@/components/custom/organisms/member-banner";
 
 export default function MemberPortalHome() {
@@ -51,7 +51,7 @@ export default function MemberPortalHome() {
           </p>
 
           {/* Card 1: Che Fico — active, with payment error */}
-          <MembershipCard
+          <MemberClubCard
             title="Che Fico"
             subtitle="Chesee & Wine"
             imageSrc="/photos/club-hero-1.jpg"
@@ -63,7 +63,7 @@ export default function MemberPortalHome() {
           <hr style={{ borderColor: "var(--neutral-alpha-4)" }} />
 
           {/* Card 2: Che Fico — gifted, paused */}
-          <MembershipCard
+          <MemberClubCard
             title="Che Fico"
             subtitle="Chesee & Wine"
             imageSrc="/photos/club-hero-2.jpg"
@@ -87,7 +87,7 @@ export default function MemberPortalHome() {
           </p>
 
           {/* Domestique — cancelled */}
-          <MembershipCard
+          <MemberClubCard
             title="Domestique"
             subtitle="Wine Club"
             imageSrc="/photos/club-hero-3.jpg"
@@ -97,7 +97,7 @@ export default function MemberPortalHome() {
           <hr style={{ borderColor: "var(--neutral-alpha-4)" }} />
 
           {/* Slanted Door — gifted, cancelled */}
-          <MembershipCard
+          <MemberClubCard
             title="Slanted Door"
             subtitle="Supper Club"
             imageSrc="/photos/club-hero-4.jpg"
@@ -108,7 +108,7 @@ export default function MemberPortalHome() {
           <hr style={{ borderColor: "var(--neutral-alpha-4)" }} />
 
           {/* Saigon Social — cancelled + error */}
-          <MembershipCard
+          <MemberClubCard
             title="Saigon Social"
             subtitle="Chesee & Wine"
             imageSrc="/photos/club-hero-5.jpg"

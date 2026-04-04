@@ -1,4 +1,4 @@
-interface MembershipCardProps {
+interface MemberClubCardProps {
   title?: string;
   subtitle?: string;
   imageSrc?: string;
@@ -9,7 +9,7 @@ interface MembershipCardProps {
   callout?: string;
 }
 
-export function MembershipCard({
+export function MemberClubCard({
   title = "Title",
   subtitle = "Supper Club",
   imageSrc,
@@ -18,7 +18,7 @@ export function MembershipCard({
   cta = "Pick a delivery window by 12/11",
   badge,
   callout,
-}: MembershipCardProps) {
+}: MemberClubCardProps) {
   return (
     <div className="flex flex-col gap-[var(--spacing-2)] items-start w-[369px]">
       {/* Main row */}
