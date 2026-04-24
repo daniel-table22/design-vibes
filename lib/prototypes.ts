@@ -10,4 +10,9 @@ export const prototypes: Prototype[] = [
     slug: "hello-world",
     description: "Starter prototype to verify routing works",
   },
+  {
+    name: "Member Portal",
+    slug: "member-portal",
+    description: "Member home with a scenario panel to toggle club state",
+  },
 ];
