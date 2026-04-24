@@ -25,7 +25,18 @@
       "mcp__figma__get_metadata",
       "mcp__figma__search_design_system",
       "Bash(env)",
-      "mcp__figma__get_design_context"
+      "mcp__figma__get_design_context",
+      "Bash(npx tsc:*)",
+      "WebSearch",
+      "WebFetch(domain:developers.notion.com)",
+      "mcp__notion__notion-fetch",
+      "mcp__figma__generate_diagram",
+      "mcp__whimsical-desktop__navigate",
+      "mcp__whimsical-desktop__board_read",
+      "mcp__whimsical-desktop__flowchart_create",
+      "Bash(next dev *)",
+      "Bash(npx next *)",
+      "Bash(grep *)"
     ]
   }
 }

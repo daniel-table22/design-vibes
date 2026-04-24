@@ -17,7 +17,7 @@ import DesignSystemShell from "./components/DesignSystemShell";
 
 export default function DesignSystemPage() {
   return (
-    <main className="p-8 max-w-7xl mx-auto">
+    <main className="p-8 max-w-7xl mx-auto" style={{ color: "var(--neutral-12)" }}>
       <h1 className="text-2xl font-semibold mb-8">Design System</h1>
       <DesignSystemShell
         colorFamilies={getColorFamilies()}

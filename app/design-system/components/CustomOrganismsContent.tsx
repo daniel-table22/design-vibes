@@ -8,7 +8,7 @@ export default function CustomOrganismsContent() {
   return (
     <div>
       <ComponentShowcase
-        name="Membership Card"
+        name="Membership Club Card"
         defaultProps={{ gift: false, fulfillment: true, cta: true, badge: false, callout: false }}
         controls={[
           { type: "toggle", label: "Gift label", key: "gift" },

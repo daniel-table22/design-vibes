@@ -76,8 +76,8 @@ const nav: NavCategory[] = [
 function EmptySection({ title, description }: { title: string; description?: string }) {
   return (
     <div className="flex flex-col items-center justify-center py-32 text-center">
-      <p className="text-sm font-medium text-gray-400">{title}</p>
-      {description && <p className="text-xs text-gray-300 mt-1">{description}</p>}
+      <p className="text-sm font-medium" style={{ color: "var(--neutral-9)" }}>{title}</p>
+      {description && <p className="text-xs mt-1" style={{ color: "var(--neutral-8)" }}>{description}</p>}
     </div>
   );
 }
@@ -93,10 +93,15 @@ export default function DesignSystemShell(props: FoundationsProps) {
       <button
         key={section}
         onClick={() => setActive(section)}
-        style={{ paddingLeft: `${depth * 12}px` }}
+        style={{
+          paddingLeft: `${depth * 12 + 8}px`,
+          paddingRight: "8px",
+          color: isActive ? "var(--neutral-12)" : "var(--neutral-9)",
+          background: isActive ? "var(--neutral-alpha-3)" : "transparent",
+        }}
         className={[
-          "w-full text-left text-sm py-0.5 cursor-pointer transition-colors",
-          isActive ? "text-black font-medium" : "text-gray-400 hover:text-gray-700",
+          "w-full text-left text-sm py-1 rounded cursor-pointer transition-colors",
+          isActive ? "font-medium" : "hover:bg-[var(--neutral-alpha-2)]",
         ].join(" ")}
       >
         {label}
@@ -114,7 +119,10 @@ export default function DesignSystemShell(props: FoundationsProps) {
             {category.section ? (
               navItem(category.label, category.section, 0)
             ) : (
-              <p className="text-xs font-medium text-gray-300 uppercase tracking-wide mb-1">
+              <p
+                className="text-xs font-medium uppercase tracking-wide mb-1 px-2"
+                style={{ color: "var(--neutral-8)" }}
+              >
                 {category.label}
               </p>
             )}
@@ -125,7 +133,7 @@ export default function DesignSystemShell(props: FoundationsProps) {
             {/* 3-level groups (Templates) */}
             {category.groups?.map((group) => (
               <div key={group.label} className="mt-1">
-                <p className="text-xs text-gray-400 font-medium pl-3 mb-0.5">{group.label}</p>
+                <p className="text-xs font-medium pl-3 mb-0.5" style={{ color: "var(--neutral-9)" }}>{group.label}</p>
                 {group.children.map((item) => navItem(item.label, item.section, 2))}
               </div>
             ))}
