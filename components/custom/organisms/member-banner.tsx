@@ -23,7 +23,7 @@ export function MemberBanner({
         <p
           className="flex-1 text-[length:var(--font-size-5)] leading-[var(--line-height-3)] min-w-0"
           style={{
-            fontFamily: "'Quadrant Text', serif",
+            fontFamily: "var(--font-quadrant)",
             color: "var(--color-brown-12)",
             fontWeight: 500,
           }}

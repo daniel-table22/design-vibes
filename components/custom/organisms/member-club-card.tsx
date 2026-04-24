@@ -14,8 +14,8 @@ export function MemberClubCard({
   subtitle = "Supper Club",
   imageSrc,
   gift = false,
-  fulfillment = "Delivery on Monday 12/13",
-  cta = "Pick a delivery window by 12/11",
+  fulfillment,
+  cta,
   badge,
   callout,
 }: MemberClubCardProps) {
@@ -42,7 +42,7 @@ export function MemberClubCard({
         {/* Content */}
         <div className="flex flex-1 flex-col items-start justify-between min-w-0 self-stretch">
           <div className="flex flex-col items-start w-full pb-[var(--spacing-2)]">
-            <p className="w-full text-[length:var(--font-size-3)] leading-[var(--line-height-3)] text-[var(--neutral-12)]" style={{ fontFamily: "'Quadrant Text', serif" }}>
+            <p className="w-full text-[length:var(--font-size-3)] leading-[var(--line-height-3)] text-[var(--neutral-12)]" style={{ fontFamily: "var(--font-quadrant)" }}>
               {title}
             </p>
             <p className="w-full text-[length:var(--font-size-2)] leading-[var(--line-height-2)] text-[var(--neutral-alpha-11)] font-normal">
